@@ -93,7 +93,7 @@ public class CategoryController : Controller
     }
 
     //POST
-    [HttpPost]
+    [HttpPost,ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public IActionResult DeletePOST(int? id)
     {
