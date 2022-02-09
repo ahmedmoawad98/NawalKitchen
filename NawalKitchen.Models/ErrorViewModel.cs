@@ -1,4 +1,4 @@
-namespace NawalKitchenWeb.Models
+namespace NawalKitchen.Models
 {
     public class ErrorViewModel
     {

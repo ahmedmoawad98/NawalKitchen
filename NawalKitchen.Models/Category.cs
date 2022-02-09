@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace NawalKitchenWeb.Models
+namespace NawalKitchen.Models
 {
     public class Category
     {

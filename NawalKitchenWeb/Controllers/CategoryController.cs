@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NawalKitchenWeb.Data;
-using NawalKitchenWeb.Models;
+using NawalKitchen.DataAccess;
+using NawalKitchen.Models;
+//using NawalKitchenWeb.Data;
+//using NawalKitchenWeb.Models;
 
 namespace NawalKitchenWeb.Controllers;
 

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using NawalKitchenWeb.Data;
+using NawalKitchen.DataAccess;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

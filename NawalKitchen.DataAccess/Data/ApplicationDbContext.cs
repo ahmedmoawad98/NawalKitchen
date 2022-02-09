@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NawalKitchenWeb.Models;
+using NawalKitchen.Models;
 
-namespace NawalKitchenWeb.Data;
+
+namespace NawalKitchen.DataAccess;
 
 public class ApplicationDbContext: DbContext
 {
