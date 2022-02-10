@@ -6,6 +6,7 @@ using NawalKitchen.Models;
 //using NawalKitchenWeb.Models;
 
 namespace NawalKitchenWeb.Controllers;
+[Area("Admin")]
 
 public class CategoryController : Controller
 {

@@ -3,9 +3,9 @@ using NawalKitchen.Models;
 //using NawalKitchenWeb.Models;
 using System.Diagnostics;
 
-namespace NawalKitchenWeb.Controllers
-{
-    public class HomeController : Controller
+namespace NawalKitchenWeb.Controllers;
+[Area("Customer")]
+public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
 
@@ -30,4 +30,3 @@ namespace NawalKitchenWeb.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
-}
