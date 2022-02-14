@@ -24,8 +24,8 @@ public class ProductController : Controller
     }
     public IActionResult Index()
     {
-        IEnumerable<CoverType> objCoverTypeList = _unitOfWork.CoverType.GetAll();
-        return View(objCoverTypeList);
+        
+        return View();
     }
     
     //GET
@@ -86,6 +86,7 @@ public class ProductController : Controller
             return RedirectToAction("Index");
         }
         return View(obj);
+       
     }
 
     //GET
@@ -118,5 +119,14 @@ public class ProductController : Controller
         TempData["success"] = "CoverType deleted successfully";
         return RedirectToAction("Index");
     }
+
+    #region API CALLS 
+    [HttpGet]
+    public IActionResult GetAll()
+    {
+        var productLIst = _unitOfWork.Product.GetAll();   
+        return Json(new { data = productLIst });
+    }
+    #endregion
 }
 
