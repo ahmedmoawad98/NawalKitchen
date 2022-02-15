@@ -108,36 +108,6 @@ public class ProductController : Controller
        
     }
 
-    //GET
-    public IActionResult Delete(int? id)
-    {
-        if (id == null || id == 0)
-        {
-            return NotFound();
-        }
-        var CoverTypeFromDbFirst = _unitOfWork.CoverType.GetFirstOrDefault(u=>u.Id == id);
-        if (CoverTypeFromDbFirst == null)
-        {
-            return NotFound();
-        }
-        return View(CoverTypeFromDbFirst);
-    }
-
-    //POST
-    [HttpPost,ActionName("Delete")]
-    [ValidateAntiForgeryToken]
-    public IActionResult DeletePOST(int? id)
-    {
-        var obj = _unitOfWork.CoverType.GetFirstOrDefault(u => u.Id == id); 
-        if(obj == null)
-        {
-            return NotFound();
-        }
-        _unitOfWork.CoverType.Remove(obj);
-        _unitOfWork.Save();
-        TempData["success"] = "CoverType deleted successfully";
-        return RedirectToAction("Index");
-    }
 
     #region API CALLS 
     [HttpGet]
@@ -146,6 +116,28 @@ public class ProductController : Controller
         var productLIst = _unitOfWork.Product.GetAll(includeProperties:"Category");   
         return Json(new { data = productLIst });
     }
+
+    //POST
+    [HttpDelete]
+    public IActionResult Delete(int? id)
+    {
+        var obj = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id);
+        if (obj == null)
+        {
+            return Json(new {success = false, message="Error while deleting"});
+        }
+
+        var oldImagePath = Path.Combine(_hostEnvironment.WebRootPath, obj.ImageUrl.TrimStart('\\'));
+        if (System.IO.File.Exists(oldImagePath))
+        {
+            System.IO.File.Delete(oldImagePath);
+        }
+
+        _unitOfWork.Product.Remove(obj);
+        _unitOfWork.Save();
+        return Json(new { success = true, message = "Delete Successfull  " });
+    }
+
     #endregion
 }
 
