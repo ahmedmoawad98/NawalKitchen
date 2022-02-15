@@ -124,7 +124,7 @@ public class ProductController : Controller
     [HttpGet]
     public IActionResult GetAll()
     {
-        var productLIst = _unitOfWork.Product.GetAll();   
+        var productLIst = _unitOfWork.Product.GetAll(includeProperties:"Category");   
         return Json(new { data = productLIst });
     }
     #endregion
