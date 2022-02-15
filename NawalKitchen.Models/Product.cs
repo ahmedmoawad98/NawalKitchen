@@ -21,6 +21,7 @@ namespace NawalKitchen.Models
         [ValidateNever]
         public string ImageUrl { get; set; }
         [Required]
+        [Display(Name ="Category")]
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         [ValidateNever]
