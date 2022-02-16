@@ -3,6 +3,8 @@ using NawalKitchen.DataAccess;
 using NawalKitchen.DataAccess.Repository;
 using NawalKitchen.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using NawalKitchen.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,10 +13,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options=>options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")
     ));
-builder.Services.AddDefaultIdentity<IdentityUser>()
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddSingleton<IEmailSender, EmailSender>();
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 var app = builder.Build();

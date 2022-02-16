@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NawalKitchen.DataAccess\NawalKitchen.DataAccess.csproj" />
+    <ProjectReference Include="..\NawalKitchen.Utility\NawalKitchen.Utility.csproj" />
   </ItemGroup>
 
   <ItemGroup>
